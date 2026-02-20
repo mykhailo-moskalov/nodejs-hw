@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 export const connectMongoDB = async () => {
   try {
-    const mongoUri = process.env.MONGO_URI;
+    const mongoUri = process.env.MONGO_URL;
 
     await mongoose.connect(mongoUri);
 

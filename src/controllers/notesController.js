@@ -58,7 +58,7 @@ export const updateNote = async (req, res) => {
   const { noteId } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(noteId)) {
-    throw createHttpError('Invalid note ID');
+    throw createHttpError(404, 'Invalid note ID');
   }
 
   const note = await Note.findOneAndUpdate({ _id: noteId }, req.body, {
