@@ -1,6 +1,5 @@
 // / Library
 import { Router } from 'express';
-
 // / Controllers
 import {
   getAllNotes,
@@ -16,20 +15,25 @@ import {
   noteIdSchema,
   updateNoteSchema,
 } from '../validations/notesValidation.js';
+// / Middleware
+import { authenticate } from '../middleware/authenticate.js';
 
 const router = Router();
 
-// / GET
+// ! Midlleware
+router.use('/notes', authenticate);
+
+// ! GET
 router.get('/notes', celebrate(getAllNotesSchema), getAllNotes);
 router.get('/notes/:noteId', celebrate(noteIdSchema), getNoteById);
 
-// / POST
+// ! POST
 router.post('/notes', celebrate(createNoteSchema), createNote);
 
-// / DELETE
+// ! DELETE
 router.delete('/notes/:noteId', celebrate(noteIdSchema), deleteNote);
 
-// / PATCH
+// ! PATCH
 router.patch('/notes/:noteId', celebrate(updateNoteSchema), updateNote);
 
 export default router;
