@@ -12,7 +12,7 @@ import { Session } from '../models/session.js';
 // / Service
 import { createSession, setSessionCookies } from '../services/auth.js';
 // / Utilities
-import { sendEmail } from '../utils/sendEmail.js';
+import { sendEmail } from '../utils/sendMail.js';
 
 // ! Register
 export const registerUser = async (req, res) => {
